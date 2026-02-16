@@ -1,0 +1,31 @@
+<h2>{{isEdit ? 'Editar Libro' : 'Nuevo Libro'}}</h2>
+
+<form (ngSubmit)="saveBook()" class="mt-3">
+  <div class="mb-3">
+    <label class="form-label">Título *</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="book.title" 
+           name="title" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Autor *</label>
+    <input type="text" class="form-control" 
+           [(ngModel)]="book.author" 
+           name="author" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Año</label>
+    <input type="number" class="form-control" 
+           [(ngModel)]="book.year" 
+           name="year">
+  </div>
+
+  <div class="mb-3">
+    <button type="submit" class="btn btn-primary me-2">
+      {{isEdit ? 'Actualizar' : 'Crear'}}
+    </button>
+    <a routerLink="/" class="btn btn-secondary">Cancelar</a>
+  </div>
+</form>

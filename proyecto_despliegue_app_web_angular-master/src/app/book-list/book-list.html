@@ -1,0 +1,33 @@
+<h2 class="mb-3">Lista de Libros</h2>
+
+<div *ngIf="books.length === 0" class="alert alert-info">
+  No hay libros. ¡Agrega uno nuevo!
+</div>
+
+<table class="table table-hover" *ngIf="books.length > 0">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Autor</th>
+      <th>Año</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td>{{book.id}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.year || '-'}}</td>
+      <td>
+        <a [routerLink]="['/edit', book.id]" class="btn btn-sm btn-warning me-1">
+          Editar
+        </a>
+        <button (click)="deleteBook(book.id!)" class="btn btn-sm btn-danger">
+          Eliminar
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
